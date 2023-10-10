@@ -1,0 +1,8 @@
+/* Radio buttons vertical spacing */
+.settings-option {
+    margin-bottom: 15px;  /* Adjust this value to your liking */
+}
+
+.settings-modal-title .ant-modal-title {
+    font-size: 2em;
+}

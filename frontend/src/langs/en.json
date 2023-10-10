@@ -1,0 +1,14 @@
+{
+    "settings.title": "Settings",
+    "settings.language": "Language",
+    "settings.ko": "Korean",
+    "settings.en": "English",
+    "settings.theme": "Theme",
+    "settings.theme.dark": "Dark Mode",
+    "settings.theme.light": "Light Mode",
+    "settings.chat.display": "Show Chat",
+    "settings.chat.tab": "Tab Menu",
+    "settings.chat.drag": "Drag to resizing",
+    "settings.chat.hide": "Hide",
+    "app.nostream.alert": "To add a stream, click the button in the bottom right."
+}
