@@ -1,72 +1,85 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-  .App {
-    margin: 16px;
-    padding: 8px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  background-color: #f0f2f5;
-}
-
-.App {
-  min-height: calc(100vh - 64px);
-  height: auto;
-  padding: 16px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin: 32px;
-}
-
-.fab-container {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  display: flex;
-  flex-direction: column-reverse; /* Reverse the order to have main FAB at the bottom */
-  align-items: center;
-  transition: transform 0.3s; /* Add transition for smooth animation */
-}
-
-.fab {
-  margin-bottom: 1rem; /* Add margin between FABs */
-}
-
-.sub-fab {
-  margin-bottom: 1rem; /* Add margin between FABs */
-  visibility: hidden; /* Hide by default */
-  transition: visibility 0.3s; /* Add transition for visibility */
-}
-
-.fab-container.open .sub-fab {
-  visibility: visible; /* Show when open */
-}
-
-/* Add negative margin to move sub FABs up when open */
-.fab-container.open {
-  margin-bottom: -70px;
-}
-
-/* 영상 및 채팅창 */
-.stream-container {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* 16:9 비율 */
-  height: 0;
-}
-
-.stream-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+  
+  @media (max-width: 768px) {
+    .App {
+      margin: 16px;
+      padding: 8px;
+    }
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f0f2f5;
+  }
+  
+  .App {
+    min-height: calc(100vh - 64px);
+    height: auto;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 32px;
+  }
+  
+  .fab-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column-reverse; /* Reverse the order to have main FAB at the bottom */
+    align-items: center;
+    transition: transform 0.3s; /* Add transition for smooth animation */
+  }
+  
+  .fab {
+    margin-bottom: 1rem; /* Add margin between FABs */
+  }
+  
+  .sub-fab {
+    margin-bottom: 1rem; /* Add margin between FABs */
+    visibility: hidden; /* Hide by default */
+    transition: visibility 0.3s; /* Add transition for visibility */
+  }
+  
+  .fab-container.open .sub-fab {
+    visibility: visible; /* Show when open */
+  }
+  
+  /* Add negative margin to move sub FABs up when open */
+  .fab-container.open {
+    margin-bottom: -70px;
+  }
+  
+  /* 영상 및 채팅창 */
+  .cinema-container {
+      display: flex;
+      flex-direction: row;
+      width: max-content;
+    }
+    
+    .cinema-stream-container {
+      flex: 4;
+      width: 900px;
+      height: 506px;
+    }
+    
+    .chat-container {
+      flex: 1;
+      width: 300px;
+      height: 506px;
+    }
+    
+    @media (max-width: 768px) {
+      .cinema-container {
+        flex-direction: column;
+      }
+      .cinema-stream-container, .chat-container {
+        width: 100%;
+        height: auto;
+      }
+    }

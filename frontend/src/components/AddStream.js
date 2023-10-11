@@ -151,12 +151,25 @@ const AddStream = ({ open: propOpen, onClose, onAddStream }) => {
     setSearchData([]); // 검색 데이터 초기화
     setSearchResult([]); // 검색 결과 초기화
     setVisible(false); // 모달 닫기
-
+  
     // 새로운 스트림을 추가하는 부분
     if (onAddStream) {
       onAddStream(record);
     }
-  };
+  
+    // 세션 스토리지에 채널 정보 저장
+    const tw_id_key = `tw_id_${record.ID}`;
+    const tw_id_value = JSON.stringify({
+      nickname: record.Nickname,
+      id: record.ID,
+      UniqueNumber: record.UniqueNumber,
+      Icon: record.Icon,
+      URL: record.URL,
+      Broadcasting: record.Broadcasting,
+      partner: record.Partner,
+    });
+    sessionStorage.setItem(tw_id_key, tw_id_value);
+  };  
 
   const searchChannels = async () => {
     const currentTime = Date.now();

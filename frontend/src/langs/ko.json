@@ -9,6 +9,5 @@
     "settings.chat.display": "채팅창 표시",
     "settings.chat.tab": "탭 메뉴",
     "settings.chat.drag": "드래그 사이즈 조절",
-    "settings.chat.hide": "숨기기",
-    "app.nostream.alert": "스트림을 추가하려면 오른쪽 하단의 버튼을 클릭하세요."
+    "settings.chat.hide": "숨기기"
 }

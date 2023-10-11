@@ -7,7 +7,7 @@ import "./Settings.css";
 
 const { Option } = Select;
 
-const Settings = ({ visible, onClose }) => {
+const Settings = ({ open, onClose }) => {
     const { locale, messages, setLocale } = useContext(LanguageContext);  // Get the locale and messages from the LanguageContext
 
     const handleLanguageChange = (value) => {
@@ -18,7 +18,7 @@ const Settings = ({ visible, onClose }) => {
     <Modal
       title={messages['settings.title'] || "Settings"}  // Use the messages object instead of FormattedMessage
       className="settings-modal-title"
-      open={visible}
+      open={open}
       onCancel={onClose}
       footer={null}
     >
@@ -35,7 +35,7 @@ const Settings = ({ visible, onClose }) => {
         <Switch checkedChildren={messages['settings.theme.dark'] || 'Dark'} unCheckedChildren={messages['settings.theme.light'] || 'Light'} defaultChecked />
       </div>
       <div className="settings-option">
-        <label>{messages['settings.chat.display'] || 'Chat Display'}</label>
+        <label>{messages['settings.chat.display'] || 'Chat Display'} </label>
         <Radio.Group defaultValue="tab">
           <Radio.Button value="tab">{messages['settings.chat.tab'] || "Tab Menu"}</Radio.Button>
           <Radio.Button value="drag">{messages['settings.chat.drag'] || "Drag to Resize"}</Radio.Button>
