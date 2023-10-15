@@ -6,7 +6,7 @@
   
   @media (max-width: 768px) {
     .App {
-      margin: 16px;
+      margin: 5px;
       padding: 8px;
     }
   }
@@ -24,6 +24,8 @@
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin: 32px;
+    display: flex;
+    justify-content: center;
   }
   
   .fab-container {
@@ -83,3 +85,75 @@
         height: auto;
       }
     }
+
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;  /* 이 속성은 필요한 경우 항목을 다음 줄로 래핑하도록 합니다. */
+        justify-content: flex-start;  /* 이 속성은 항목을 컨테이너의 왼쪽으로 정렬합니다. */
+    }
+    
+    .stream-container {
+        flex: 1 1 auto; /* 이 속성은 항목이 더 많아질수록 줄바꿈하도록 합니다. */
+        min-width: calc(33.333% - 16px); /* 이 속성은 각 스트림 컨테이너의 최소 너비를 설정합니다. */
+        width: 97%;
+        margin-right: 8px; /* 오른쪽 마진 */
+        margin-bottom: 8px; /* 아래쪽 마진 */
+    }
+
+    .tab-mode-container {
+        width: calc(33.333% - 16px); /* 부모 요소의 너비에 맞게 .tab-mode-container의 너비를 설정합니다 */
+        float: left;
+    }
+    
+    .flex-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-content: flex-start;
+    }
+
+    .tab-mode-container .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    
+    .tab-mode-container .stream-container {
+        /* flex: 0 0 auto; */
+        /* max-width: calc(33.333% - 16px);  /* 각 스트림 컨테이너의 최대 너비를 제한합니다. */
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+
+    .tab-mode-container-marginLeft {
+        margin-left: 15px;
+    }
+
+   .custom-tabs .ant-tabs-tab {
+    flex: 1;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .custom-tabs .ant-tabs-tab {
+      flex: none;
+      max-width: 100px;  /* or whatever maximum width you want */
+    }
+  }
+  
+  .chat-combine-layout {
+    width: 100%;
+  }
+
+  .chat-combine-layout .ant-tabs-nav {
+    padding-left: 20px;
+  }
+
+  .hide-chat-container {
+    width: calc(33.3333% - 16px);
+    float: left;
+    margin-right: 10px;
+  }
+
+  .ccplus-stream-container {
+    height: 400px;
+  }

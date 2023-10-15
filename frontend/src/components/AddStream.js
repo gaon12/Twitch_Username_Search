@@ -32,6 +32,7 @@ const AddStream = ({ open: propOpen, onClose, onAddStream }) => {
   const [searchData, setSearchData] = useState([]);
   const [onlyPartners, setOnlyPartners] = useState(false);
   const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태 추가
+  const isMobile = window.innerWidth <= 768;
 
   const { Option } = Select;
 
@@ -78,8 +79,15 @@ const AddStream = ({ open: propOpen, onClose, onAddStream }) => {
       title: "ID",
       dataIndex: "ID",
       key: "ID",
+      render: isMobile
+        ? (text) => (
+            <a href={`https://www.twitch.tv/${text}`} target="_blank" rel="noopener noreferrer">
+              {text}
+            </a>
+          )
+        : undefined,
     },
-    {
+    !isMobile && {
       title: "URL",
       dataIndex: "URL",
       key: "URL",
@@ -93,10 +101,10 @@ const AddStream = ({ open: propOpen, onClose, onAddStream }) => {
       title: "Action",
       key: "action",
       render: (text, record) => (
-        <Button onClick={() => addStream(record)}>Select</Button> // onAddStream으로 이름 변경
+        <Button onClick={() => addStream(record)}>Select</Button>
       ),
     },
-  ];
+  ].filter(Boolean);
 
   const handleCheckboxChange = (e) => {
     const isChecked = e.target.checked;
@@ -188,7 +196,16 @@ const AddStream = ({ open: propOpen, onClose, onAddStream }) => {
 
     setLoading(true); // Set loading to true at the start of the search
     setMessage(null); // Clear the previous message
-    const value = searchQuery; // 사용자가 입력한 검색어 사용
+    let value = searchQuery; // 사용자가 입력한 검색어 사용
+
+    // 트위치 URL일 경우, ID 부분만 추출
+    // "https://www.twitch.tv/"로 시작하는지 확인
+    const twitchUrlPattern = /^https?:\/\/www\.twitch\.tv\//;
+    if (twitchUrlPattern.test(value)) {
+      // Twitch URL일 경우, 마지막 부분(ID 부분)을 추출
+      value = value.replace(twitchUrlPattern, "");
+    }
+
     if (searchType === "nickname") {
       try {
         const response = await axios.post(
@@ -250,6 +267,7 @@ const AddStream = ({ open: propOpen, onClose, onAddStream }) => {
   return (
     <Modal
       title="스트림 추가"
+      id="search-streams-modal"
       open={visible}
       onCancel={() => {
         setSearchData([]);  // 검색 데이터 초기화

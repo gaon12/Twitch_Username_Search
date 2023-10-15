@@ -12,7 +12,15 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 const ItemType = "ITEM";
 
-const DraggableItem = ({ item, index, moveItem, length, removeItem }) => {
+const DraggableItem = ({ 
+  item, 
+  index, 
+  moveItem, 
+  length, 
+  removeItem, 
+  processedNicknames, 
+  setProcessedNicknames 
+}) => {
   const [userInfo, setUserInfo] = useState(null);
   const sessionKey = `tw_id_${item.id}`;
 
@@ -24,6 +32,10 @@ const DraggableItem = ({ item, index, moveItem, length, removeItem }) => {
         return;
       }
 
+      if (processedNicknames.has(item.nickname)) {
+        return;
+      }
+
       try {
         const response = await axios.post("https://mt.uiharu.dev/api2.php", {
           SearchType: "ID",
@@ -32,8 +44,18 @@ const DraggableItem = ({ item, index, moveItem, length, removeItem }) => {
 
         const data = response.data;
         if (data.StatusCode === 200) {
-          sessionStorage.setItem(sessionKey, JSON.stringify(data.data));
-          setUserInfo(data.data);
+          const transformedData = {
+            nickname: data.data.Nickname,
+            id: data.data.ID,
+            UniqueNumber: data.data.UniqueNumber,
+            Icon: data.data.Icon,
+            URL: data.data.URL,
+            Broadcasting: data.data.Broadcasting,
+            partner: data.data.Partner,
+          };
+          sessionStorage.setItem(sessionKey, JSON.stringify(transformedData));
+          setUserInfo(transformedData);
+          setProcessedNicknames(prev => new Set([...prev, item.nickname]));
         }
       } catch (error) {
         console.error("API 호출 중 에러 발생:", error);
@@ -41,7 +63,7 @@ const DraggableItem = ({ item, index, moveItem, length, removeItem }) => {
     };
 
     fetchData();
-  }, [item.id, sessionKey]);
+  }, [item.id, item.nickname, sessionKey, processedNicknames, setProcessedNicknames]);
 
   const [, ref] = useDrag({
     type: ItemType,
@@ -113,6 +135,8 @@ const DraggableItem = ({ item, index, moveItem, length, removeItem }) => {
 };
 
 const SortableList = ({ items, onSort }) => {
+  const [processedNicknames, setProcessedNicknames] = useState(new Set());
+
   const moveItem = (fromIndex, toIndex) => {
     const updatedItems = [...items];
     const [movedItem] = updatedItems.splice(fromIndex, 1);
@@ -151,6 +175,8 @@ const SortableList = ({ items, onSort }) => {
             moveItem={moveItem}
             length={items.length}
             removeItem={removeItem}
+            processedNicknames={processedNicknames}
+            setProcessedNicknames={setProcessedNicknames}
           />
         ))
       )}

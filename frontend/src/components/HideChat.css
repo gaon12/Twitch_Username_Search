@@ -1,0 +1,24 @@
+.custom-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.hidechat-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 400px;
+}
+
+.hidechat-stream-container {
+    height: 100%;
+}
+
+.hidechat-iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
