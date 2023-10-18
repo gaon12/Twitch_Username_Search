@@ -1,0 +1,98 @@
+[
+  {
+    "License": "MIT",
+    "LibraryName": "@ant-design/icons",
+    "LibraryLink": "git+https://github.com/ant-design/ant-design-icons.git#master",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "@emotion/react",
+    "LibraryLink": "git+https://github.com/emotion-js/emotion.git#main",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "@emotion/styled",
+    "LibraryLink": "git+https://github.com/emotion-js/emotion.git#main",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "@mui/icons-material",
+    "LibraryLink": "git+https://github.com/mui/material-ui.git",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "@mui/material",
+    "LibraryLink": "git+https://github.com/mui/material-ui.git",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "antd",
+    "LibraryLink": "git+https://github.com/ant-design/ant-design.git",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "axios",
+    "LibraryLink": "git+https://github.com/axios/axios.git",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "eslint-config-react-app",
+    "LibraryLink": "git+https://github.com/facebook/create-react-app.git",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "react",
+    "LibraryLink": "git+https://github.com/facebook/react.git",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "react-dnd",
+    "LibraryLink": "https://github.com/react-dnd/react-dnd.git",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "react-dnd-html5-backend",
+    "LibraryLink": "https://github.com/react-dnd/react-dnd.git",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "react-dom",
+    "LibraryLink": "git+https://github.com/facebook/react.git",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "react-router-dom",
+    "LibraryLink": "git+https://github.com/remix-run/react-router.git",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "react-scripts",
+    "LibraryLink": "git+https://github.com/facebook/create-react-app.git",
+    "LicenseLink": ""
+  },
+  {
+    "License": "MIT",
+    "LibraryName": "sweetalert2",
+    "LibraryLink": "git+https://github.com/sweetalert2/sweetalert2.git",
+    "LicenseLink": ""
+  },
+  {
+    "License": "Apache-2.0",
+    "LibraryName": "web-vitals",
+    "LibraryLink": "git+https://github.com/GoogleChrome/web-vitals.git",
+    "LicenseLink": ""
+  }
+]

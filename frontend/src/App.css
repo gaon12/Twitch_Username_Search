@@ -1,159 +1,196 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  @media (max-width: 768px) {
-    .App {
-      margin: 5px;
-      padding: 8px;
-    }
-  }
-  
-  body {
-    font-family: "Roboto", sans-serif;
-    background-color: #f0f2f5;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
   .App {
-    min-height: calc(100vh - 64px);
-    height: auto;
-    padding: 16px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin: 32px;
-    display: flex;
-    justify-content: center;
+    margin: 5px;
+    padding: 8px;
   }
-  
-  .fab-container {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    display: flex;
-    flex-direction: column-reverse; /* Reverse the order to have main FAB at the bottom */
-    align-items: center;
-    transition: transform 0.3s; /* Add transition for smooth animation */
-  }
-  
-  .fab {
-    margin-bottom: 1rem; /* Add margin between FABs */
-  }
-  
-  .sub-fab {
-    margin-bottom: 1rem; /* Add margin between FABs */
-    visibility: hidden; /* Hide by default */
-    transition: visibility 0.3s; /* Add transition for visibility */
-  }
-  
-  .fab-container.open .sub-fab {
-    visibility: visible; /* Show when open */
-  }
-  
-  /* Add negative margin to move sub FABs up when open */
-  .fab-container.open {
-    margin-bottom: -70px;
-  }
-  
-  /* 영상 및 채팅창 */
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f0f2f5;
+}
+
+.App {
+  min-height: calc(100vh - 64px);
+  height: auto;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 32px;
+  display: flex;
+  /* justify-content: center; */
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column-reverse;
+  /* Reverse the order to have main FAB at the bottom */
+  align-items: center;
+  transition: transform 0.3s;
+  /* Add transition for smooth animation */
+}
+
+.fab {
+  margin-bottom: 1rem;
+  /* Add margin between FABs */
+}
+
+.sub-fab {
+  margin-bottom: 1rem;
+  /* Add margin between FABs */
+  visibility: hidden;
+  /* Hide by default */
+  transition: visibility 0.3s;
+  /* Add transition for visibility */
+}
+
+.fab-container.open .sub-fab {
+  visibility: visible;
+  /* Show when open */
+}
+
+/* Add negative margin to move sub FABs up when open */
+.fab-container.open {
+  margin-bottom: -70px;
+}
+
+/* 영상 및 채팅창 */
+.cinema-container {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+}
+
+.cinema-stream-container {
+  flex: 4;
+  width: 900px;
+  height: 506px;
+}
+
+.chat-container {
+  flex: 1;
+  width: 300px;
+  height: 506px;
+}
+
+@media (max-width: 768px) {
   .cinema-container {
-      display: flex;
-      flex-direction: row;
-      width: max-content;
-    }
-    
-    .cinema-stream-container {
-      flex: 4;
-      width: 900px;
-      height: 506px;
-    }
-    
-    .chat-container {
-      flex: 1;
-      width: 300px;
-      height: 506px;
-    }
-    
-    @media (max-width: 768px) {
-      .cinema-container {
-        flex-direction: column;
-      }
-      .cinema-stream-container, .chat-container {
-        width: 100%;
-        height: auto;
-      }
-    }
-
-    .flex-container {
-        display: flex;
-        flex-wrap: wrap;  /* 이 속성은 필요한 경우 항목을 다음 줄로 래핑하도록 합니다. */
-        justify-content: flex-start;  /* 이 속성은 항목을 컨테이너의 왼쪽으로 정렬합니다. */
-    }
-    
-    .stream-container {
-        flex: 1 1 auto; /* 이 속성은 항목이 더 많아질수록 줄바꿈하도록 합니다. */
-        min-width: calc(33.333% - 16px); /* 이 속성은 각 스트림 컨테이너의 최소 너비를 설정합니다. */
-        width: 97%;
-        margin-right: 8px; /* 오른쪽 마진 */
-        margin-bottom: 8px; /* 아래쪽 마진 */
-    }
-
-    .tab-mode-container {
-        width: calc(33.333% - 16px); /* 부모 요소의 너비에 맞게 .tab-mode-container의 너비를 설정합니다 */
-        float: left;
-    }
-    
-    .flex-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        justify-content: flex-start;
-    }
-
-    .tab-mode-container .flex-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-    }
-    
-    .tab-mode-container .stream-container {
-        /* flex: 0 0 auto; */
-        /* max-width: calc(33.333% - 16px);  /* 각 스트림 컨테이너의 최대 너비를 제한합니다. */
-        margin-right: 8px;
-        margin-bottom: 8px;
-    }
-
-    .tab-mode-container-marginLeft {
-        margin-left: 15px;
-    }
-
-   .custom-tabs .ant-tabs-tab {
-    flex: 1;
-    text-align: center;
+    flex-direction: column;
   }
-  
-  @media (max-width: 768px) {
-    .custom-tabs .ant-tabs-tab {
-      flex: none;
-      max-width: 100px;  /* or whatever maximum width you want */
-    }
-  }
-  
-  .chat-combine-layout {
+
+  .cinema-stream-container,
+  .chat-container {
     width: 100%;
+    height: auto;
   }
+}
 
-  .chat-combine-layout .ant-tabs-nav {
-    padding-left: 20px;
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* 이 속성은 필요한 경우 항목을 다음 줄로 래핑하도록 합니다. */
+  justify-content: flex-start;
+  /* 이 속성은 항목을 컨테이너의 왼쪽으로 정렬합니다. */
+}
+
+.stream-container {
+  flex: 1 1 auto;
+  /* 이 속성은 항목이 더 많아질수록 줄바꿈하도록 합니다. */
+  min-width: calc(33.333% - 16px);
+  /* 이 속성은 각 스트림 컨테이너의 최소 너비를 설정합니다. */
+  width: 97%;
+  margin-right: 8px;
+  /* 오른쪽 마진 */
+  margin-bottom: 8px;
+  /* 아래쪽 마진 */
+}
+
+.tab-mode-container {
+  width: calc(33.333% - 16px);
+  /* 부모 요소의 너비에 맞게 .tab-mode-container의 너비를 설정합니다 */
+  float: left;
+}
+
+@media (max-width: 768px) {
+  .tab-mode-container {
+    width: 100%;
+    height: 100%;
   }
+}
 
+@media (max-width: 768px) {
+  .hide-chat-content {
+    width: 100%!important;
+    height: calc(90vh - 16px);
+  }
+}
+
+@media (max-width: 768px) {
   .hide-chat-container {
-    width: calc(33.3333% - 16px);
-    float: left;
-    margin-right: 10px;
+    width: 100%!important;
   }
+}
 
-  .ccplus-stream-container {
-    height: 400px;
+.flex-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: flex-start;
+}
+
+.tab-mode-container .flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.tab-mode-container .stream-container {
+  /* flex: 0 0 auto; */
+  /* max-width: calc(33.333% - 16px);  /* 각 스트림 컨테이너의 최대 너비를 제한합니다. */
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.tab-mode-container-marginLeft {
+  margin-left: 15px;
+}
+
+.custom-tabs .ant-tabs-tab {
+  flex: 1;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .custom-tabs .ant-tabs-tab {
+    flex: none;
+    max-width: 100px;
+    /* or whatever maximum width you want */
   }
+}
+
+.chat-combine-layout {
+  width: 100%;
+}
+
+.chat-combine-layout .ant-tabs-nav {
+  padding-left: 20px;
+}
+
+.hide-chat-container {
+  width: calc(33.3333% - 16px);
+  float: left;
+  margin-right: 10px;
+}
+
+.ccplus-stream-container {
+  height: 400px;
+}

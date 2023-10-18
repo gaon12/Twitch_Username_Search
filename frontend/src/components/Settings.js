@@ -5,33 +5,45 @@ import "./Settings.css";
 
 const { Option } = Select;
 
-// 매직 스트링을 상수로 대체
 const CHAT_DISPLAY_OPTIONS = {
     TAB: 'TabMenu',
     CINEMA: 'CinemaMode',
-    COMBINE: 'ChatCombine'
+    CHATCOMBINE: 'ChatCombine',
+    CHATCOMBINEPLUS: 'ChatCombinePlus',
+    HIDE: 'Hide'
 };
 
 const Settings = ({ open, onClose }) => {
     const { locale, messages, setLocale } = useContext(LanguageContext);
     
-    const [chatDisplayOption, setChatDisplayOption] = useState('tab');
+    const [chatDisplayOption, setChatDisplayOption] = useState('Tab');
 
     useEffect(() => {
-        const storedValue = localStorage.getItem('ShowChat');
-        const option = Object.keys(CHAT_DISPLAY_OPTIONS).find(key => CHAT_DISPLAY_OPTIONS[key] === storedValue) || 'TAB';
-        setChatDisplayOption(option.toLowerCase());
-    }, []);
+        const checkLocalStorage = () => {
+            const storedValue = localStorage.getItem('ShowChat');
+            if (Object.values(CHAT_DISPLAY_OPTIONS).includes(storedValue) && storedValue !== chatDisplayOption) {
+                setChatDisplayOption(storedValue);
+            } else if (!storedValue || !Object.values(CHAT_DISPLAY_OPTIONS).includes(storedValue)) {
+                localStorage.setItem('ShowChat', CHAT_DISPLAY_OPTIONS.TAB);
+                setChatDisplayOption(CHAT_DISPLAY_OPTIONS.TAB);
+            }
+        };
+        
+        checkLocalStorage();  // 초기에 한 번 실행
+        const intervalId = setInterval(checkLocalStorage, 300);  // 이후 300ms마다 실행
+
+        return () => clearInterval(intervalId);  // 컴포넌트가 언마운트될 때 인터벌 클리어
+    }, [chatDisplayOption]);
 
     const handleLanguageChange = (value) => {
         setLocale(value);
     };
 
     const handleChatDisplayChange = (value) => {
-        const localStorageValue = CHAT_DISPLAY_OPTIONS[value.toUpperCase()];
-        if (localStorageValue) {
-            localStorage.setItem('ShowChat', localStorageValue);
-            setChatDisplayOption(value);
+        const optionValue = CHAT_DISPLAY_OPTIONS[value.toUpperCase()];
+        if (optionValue) {
+            localStorage.setItem('ShowChat', optionValue);
+            setChatDisplayOption(optionValue);
         }
     };
 
@@ -70,10 +82,11 @@ const Settings = ({ open, onClose }) => {
                     <label>{messages['settings.chat.display'] || 'Chat Display'}: </label>
                 </Tooltip>
                 <Select value={chatDisplayOption} style={{ width: 160 }} onChange={handleChatDisplayChange}>
-                    <Option value="tab">{messages['settings.chat.tab'] || "Tab Menu"}</Option>
-                    <Option value="cinema">{messages['settings.chat.cinemamode'] || "Cinema Mode"}</Option>
-                    <Option value="combine">{messages['settings.chat.chatcombine'] || "Combine Chats"}</Option>
-                    <Option value="hide">{messages['settings.chat.hidechat'] || "Hide Chat"}</Option>
+                    {Object.entries(CHAT_DISPLAY_OPTIONS).map(([key, value]) => (
+                        <Option key={key} value={value}>
+                            {messages[`settings.chat.${value.toLowerCase()}`] || value}
+                        </Option>
+                    ))}
                 </Select>
             </div>
         </Modal>

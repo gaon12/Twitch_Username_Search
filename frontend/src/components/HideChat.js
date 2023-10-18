@@ -23,13 +23,14 @@ const HideChat = ({ stream, parentDomain }) => {
             className="custom-row"
         >
             <Col span={24}>
-                <div className="cinema-container">
+                <div className="cinema-container hide-chat-content" style={{ width: "100%" }}>
                     <div className="cinema-stream-container" style={{ flex: flexValue }}>
                         <iframe
                             title={`${stream.nickname}-stream`}
                             src={`https://player.twitch.tv/?channel=${stream.id}&parent=${parentDomain}`}
                             className="cinema-iframe"
                             allowFullScreen={true}
+                            style={{ width: "100%", height: "100%", border: 0}}
                         />
                     </div>
                 </div>
